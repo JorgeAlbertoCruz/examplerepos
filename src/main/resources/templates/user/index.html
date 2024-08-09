@@ -1,0 +1,65 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainlayout" >
+
+<div layout:fragment="content">
+    <!-- Mostrar mensaje de confirmación en caso de éxito -->
+    <div th:if="${msg != null}">
+        <script>
+            Swal.fire({
+              title: "Confirmación",
+              text: '[[${msg}]]',
+              icon: "success"
+            });
+        </script>
+    </div>
+
+    <!-- Mostrar mensaje de error en caso de error -->
+    <div th:if="${error != null}">
+        <script>
+            Swal.fire({
+              title: "Error",
+              text: '[[${error}]]',
+              icon: "success"
+            });
+        </script>
+    </div>
+
+    <h1>Listado de Usuarios</h1>
+    <a th:href="@{/user/create}" class="btn btn-outline-primary">Nuevo docente</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${user}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.firstname}"></td>
+            <td th:text="${item.lastname}"></td>
+            <td th:text="${item.email}"></td>
+            <td th:text="${item.password}"></td>
+            <td>
+                <a th:href="@{/user/details/{id} (id = ${item.id}) }" class="btn btn-outline-secondary">Detalles</a> |
+                <a th:href="@{/user/edit/{id} (id = ${item.id}) }" class="btn btn-outline-info">Editar</a> |
+                <a th:href="@{/user/remove/{id} (id = ${item.id}) }" class="btn btn-outline-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" th:each="pageNumber : ${pageNumbers}">
+                <a class="page-link" th:href="@{|/user?page=${pageNumber}|}" th:text="${pageNumber}"></a>
+            </li>
+        </ul>
+    </nav>
+</div>

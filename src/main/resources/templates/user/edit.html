@@ -1,0 +1,54 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainlayout">
+
+
+<div layout:fragment="content">
+    <h1>Editar Usuario</h1>
+    <form th:action="@{/user/save}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{userid}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstname">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{firstname}" id="firstname" placeholder="Escriba el nombre del Usuario" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastname">Apellido</label>
+                    <input type="text" class="form-control" th:field="*{lastname}" id="lastname" placeholder="Escriba el apellido del Usuario" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Escriba el email del Usuario" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="roleid">Rol de Usuario</label>
+                    <input type="text" class="form-control" th:field="*{roleid}" id="roleid" placeholder="Escriba el rol del usuario" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="areaid">Area de Usuario</label>
+                    <input type="text" class="form-control" th:field="*{areaid}" id="areaid" placeholder="Escriba el area del usuario" required>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar cambios</button> |
+        <a th:href="@{/user}">Regresar</a>
+    </form>
+</div>

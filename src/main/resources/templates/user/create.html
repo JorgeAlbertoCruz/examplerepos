@@ -1,0 +1,66 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainlayout">
+
+
+<div layout:fragment="content">
+    <h1>Crear Usuario</h1>
+    <form th:action="@{/user/save}" th:object="${user}" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstname">Nombre</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                </div>
+            </div>
+        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                    <label for="lastname">Apellido</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                        </div>
+                    </div>
+                </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Correo Electronico</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                    </div>
+                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                    <label for="role">Rol</label>
+                    <select class="form-control" id="role" name="roleid" required>
+                        <!-- Dynamically populate this with roles from your database -->
+                        <option value="1">Admin</option>
+                        <option value="2">User</option>
+                        <!-- Add more roles as needed -->
+                    </select>
+                </div>
+                            </div>
+                        </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                <a th:href="@{/user/index}">Regresar</a>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>
